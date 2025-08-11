@@ -2,15 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Image Recognition</title>
+    <title>Medical Image Recognition App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Medical Image Recognition System</h1>
+    <h1>Medical Image Recognition App</h1>
     <form method="post" enctype="multipart/form-data">
-        <label for="file">Upload Medical Image:</label>
-        <input type="file" name="file" accept=".jpg,.jpeg,.png" required>
-        <button type="submit">Analyze Image</button>
+        <label for="file">Choose a medical image:</label>
+        <input type="file" name="file" accept=".jpg, .jpeg, .png" required>
+        <br>
+        <input type="submit" value="Generate Medical Description">
     </form>
+    
+    {% if response_text %}
+        <div class="result">
+            <p>{{ response_text }}</p>
+        </div>
+    {% endif %}
 </body>
 </html>
